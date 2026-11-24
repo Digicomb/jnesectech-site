@@ -1,0 +1,391 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import '../styles/global.css';
+import logo from '../assets/logo.png';
+import heroImg from '../assets/hero-tech.png';
+import aboutImg from '../assets/about.jpg';
+import csaa from '../assets/badges/csaa.jpg';
+import esa from '../assets/badges/esa.jpg';
+import homeadvisor from '../assets/badges/homeadvisor.jpg';
+import {
+  company,
+  services,
+  smartHome,
+  reasons,
+  process,
+  values,
+  partners,
+} from '../content';
+
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/*.jpg', { eager: true });
+const partnerLogos = import.meta.glob<{ default: ImageMetadata }>('../assets/partners/*', {
+  eager: true,
+});
+const photo = (name: string) => photos[`../assets/${name}.jpg`].default;
+const partnerLogo = (file: string) =>
+  Object.entries(partnerLogos).find(([k]) => k.includes(`/${file}.`))![1].default;
+
+const years = new Date().getFullYear() - company.founded;
+const title = 'JNE Security and Technology | Security & IT in Louisville, KY';
+const description =
+  'Security systems, surveillance, access control, video monitoring and IT networks for Louisville and Kentuckiana businesses and homes since 2010.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: company.name,
+  url: 'https://jnesectech.com/',
+  telephone: '+1-502-713-8301',
+  email: company.email,
+  foundingDate: String(company.founded),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.street,
+    addressLocality: 'Louisville',
+    addressRegion: 'KY',
+    postalCode: '40299',
+    addressCountry: 'US',
+  },
+  areaServed: 'Louisville Metro and Kentuckiana',
+  sameAs: [company.facebook],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://jnesectech.com/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://jnesectech.com/" />
+    <meta name="theme-color" content="#23318e" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="#top" class="brand" aria-label="JNE Security and Technology home">
+          <Image src={logo} alt="JNE Security and Technology" width={190} loading="eager" />
+        </a>
+        <nav aria-label="Main">
+          <ul class="nav">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">Why JNE</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a class="header-phone" href={company.phoneHref}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+          <span>{company.phone}</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <Image src={heroImg} alt="" class="hero-bg" widths={[800, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+        <div class="wrap hero-content">
+          <p class="eyebrow">Louisville's local security &amp; IT company</p>
+          <h1>Protection for the people and places that matter most.</h1>
+          <p class="lede">
+            Security systems and IT services that help Louisville business owners and residents feel
+            safer, save money and get real peace of mind. Trusted since {company.founded}.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href={company.bookingUrl} target="_blank" rel="noopener">Request a quote</a>
+            <a class="btn btn-ghost" href={company.phoneHref}>Call {company.phone}</a>
+          </div>
+          <ul class="hero-tags" aria-label="What we do">
+            <li>Security</li><li>Surveillance</li><li>Access Control</li><li>Video Monitoring</li><li>Technology &amp; Networks</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TRUST STRIP -->
+      <section class="trust">
+        <div class="wrap trust-inner">
+          <div class="stat"><strong>{years}+</strong><span>years serving Kentuckiana</span></div>
+          <div class="stat"><strong>25+</strong><span>years of combined experience</span></div>
+          <div class="stat"><strong>24/7</strong><span>monitored protection</span></div>
+          <div class="badges">
+            <Image src={csaa} alt="Member, Central Station Alarm Association (CSAA)" height={56} />
+            <Image src={esa} alt="Electronic Security Association (ESA)" height={56} />
+            <Image src={homeadvisor} alt="HomeAdvisor" height={56} />
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO -->
+      <section class="section intro">
+        <div class="wrap intro-grid">
+          <div>
+            <p class="eyebrow dark">Delivering protection and productivity</p>
+            <h2>Two services every business and home needs: security and IT.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              We protect your family, your business and your home. Our mission is simple, innovative
+              security and IT solutions, delivered with integrity, transparency and industry best
+              practices, and backed by long-term relationships with every client.
+            </p>
+            <ul class="checks two-col">
+              <li>Security, surveillance &amp; access control</li>
+              <li>IT support &amp; maintenance</li>
+              <li>Network creation &amp; management</li>
+              <li>Telephony</li>
+              <li>Residential smart home &amp; A/V</li>
+              <li>Commercial audio/visual</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="section services" id="services">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow dark">Our services</p>
+            <h2>Second to none, for your home and business.</h2>
+            <p>
+              Cutting-edge technology, vigilant monitoring and a commitment to your safety. And for
+              many organizations, we are more cost-effective than an internal IT department.
+            </p>
+          </div>
+
+          <div class="service-list">
+            {services.map((s, i) => (
+              <article class="service" id={s.id}>
+                <div class="service-media">
+                  <Image src={photo(s.image)} alt="" widths={[480, 800]} sizes="(min-width: 900px) 40vw, 100vw" />
+                  <span class="service-num">0{i + 1}</span>
+                </div>
+                <div class="service-body">
+                  <h3>{s.title}</h3>
+                  <p>{s.summary}</p>
+                  <details>
+                    <summary>See details</summary>
+                    <div class="service-groups">
+                      {s.groups.map((g) => (
+                        <div>
+                          <h4>{g.heading}</h4>
+                          <ul class="checks">
+                            {g.items.map((it) => <li>{it}</li>)}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                    {s.note && <p class="note">{s.note}</p>}
+                  </details>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="smart">
+            <h3>Automation, smart home &amp; audio/visual</h3>
+            <div class="smart-grid">
+              {smartHome.map((c) => (
+                <div class="smart-card">
+                  <h4>{c.title}</h4>
+                  <p>{c.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY -->
+      <section class="section why" id="why">
+        <div class="wrap">
+          <div class="section-head light">
+            <p class="eyebrow">Why JNE</p>
+            <h2>Superior installation, monitoring and equipment, at an affordable price.</h2>
+            <p>
+              You want to secure your family, business, home, data and possessions in every way
+              possible. We bring advanced mobile and web technology to every system we install across
+              the Louisville metro.
+            </p>
+          </div>
+          <div class="reason-grid">
+            {reasons.map((r, i) => (
+              <div class="reason">
+                <span class="reason-icon" aria-hidden="true">
+                  {i === 0 && <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5" /></svg>}
+                  {i === 1 && <svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>}
+                  {i === 2 && <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>}
+                </span>
+                <h3>{r.title}</h3>
+                <p>{r.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="process">
+            <h3>Why we are the right choice</h3>
+            <ol class="process-steps">
+              {process.map((p) => (
+                <li>
+                  <h4>{p.title}</h4>
+                  <p>{p.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section about" id="about">
+        <div class="wrap about-grid">
+          <div class="about-media">
+            <Image src={aboutImg} alt="" widths={[480, 667]} sizes="(min-width: 900px) 35vw, 100vw" />
+          </div>
+          <div class="about-copy">
+            <p class="eyebrow dark">Our story</p>
+            <h2>Customer service doesn't end with the sale. It begins there.</h2>
+            <p>
+              Michael Olson founded JNE Security and Technology in {company.founded}, after seeing how
+              poorly customers were supported after the sale at a previous security company. He knew
+              he could set a higher standard: cutting-edge equipment and lasting service for businesses
+              and homeowners alike.
+            </p>
+            <p>
+              The name holds special meaning. <strong>J</strong>oshua, <strong>N</strong>oah and
+              <strong>E</strong>mily are Michael's three children, and together with his Christian
+              faith they shape every part of how the business is run.
+            </p>
+            <p>
+              Today JNE is Kentuckiana's local go-to security and IT specialist: a team that keeps
+              evolving to meet both the market's demands and the unique needs of your business.
+            </p>
+            <blockquote>
+              Our mission is to safeguard our clients' assets and ensure their peace of mind through
+              innovative security systems and expertly designed networks, and to become a trusted
+              partner in their success.
+            </blockquote>
+          </div>
+        </div>
+        <div class="wrap">
+          <ul class="values">
+            {values.map((v) => (
+              <li><strong>{v.title}</strong><span>{v.text}</span></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="section video-section">
+        <div class="wrap video-wrap">
+          <div class="video-copy">
+            <p class="eyebrow dark">See us at work</p>
+            <h2>Licensed technicians. Clean, professional installs.</h2>
+            <p>
+              Every system is installed by licensed technicians with years of field experience, and
+              we stay with you long after the job is done.
+            </p>
+          </div>
+          <video controls preload="none" playsinline poster={heroImg.src}>
+            <source src="/video/jne.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
+      <!-- PARTNERS -->
+      <section class="section partners">
+        <div class="wrap">
+          <p class="eyebrow dark center">Our partners</p>
+          <h2 class="center">Equipment from trusted manufacturers</h2>
+          <ul class="partner-grid">
+            {partners.map((p) => (
+              <li><Image src={partnerLogo(p.file)} alt={p.name} height={60} /></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- FINANCING -->
+      <section class="financing">
+        <div class="wrap financing-inner">
+          <div>
+            <h2>Commercial financing available</h2>
+            <p>Easy, affordable financing, flexible contracts and payment terms. Ask us for details.</p>
+          </div>
+          <a class="btn btn-light" href={company.phoneHref}>Ask about financing</a>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section contact" id="contact">
+        <div class="wrap contact-grid">
+          <div>
+            <p class="eyebrow dark">Getting in touch is easy</p>
+            <h2>Don't put off protecting your family, home and business.</h2>
+            <p>
+              Whether you need a basic system or a complete security, surveillance and network
+              package, JNE has the products and knowledge to design the right one. Call us, email us or
+              request a visit online.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href={company.bookingUrl} target="_blank" rel="noopener">Request a quote</a>
+              <a class="btn btn-outline" href={company.bookingUrl} target="_blank" rel="noopener">Book a service visit</a>
+            </div>
+          </div>
+          <ul class="contact-cards">
+            <li>
+              <span class="label">Phone</span>
+              <a href={company.phoneHref}>{company.phone}</a>
+            </li>
+            <li>
+              <span class="label">Email</span>
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </li>
+            <li>
+              <span class="label">Office</span>
+              <a href={company.mapUrl} target="_blank" rel="noopener">{company.street}<br />{company.city}</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <Image src={logo} alt="JNE Security and Technology" width={170} class="footer-logo" />
+          <p>Security and IT for Louisville and Kentuckiana businesses and homes since {company.founded}.</p>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <ul>
+            {services.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href={company.phoneHref}>{company.phone}</a></li>
+            <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
+            <li><a href={company.mapUrl} target="_blank" rel="noopener">{company.street}, {company.city}</a></li>
+            <li><a href={company.facebook} target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap copyright">
+        © {new Date().getFullYear()} {company.name}. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
