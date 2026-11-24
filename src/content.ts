@@ -2,12 +2,10 @@
 
 export const company = {
   name: 'JNE Security and Technology',
-  phone: '(502) 713-8301',
-  phoneHref: 'tel:+15027138301',
-  email: 'questions@jnesecuritysystems.com',
-  street: '11900 Plantside Drive, Suite 3',
-  city: 'Louisville, KY 40299',
-  mapUrl: 'https://maps.app.goo.gl/A5waAxXxytBVUwxW8',
+  phone: '(502) 276-1858',
+  phoneHref: 'tel:+15022761858',
+  phoneIntl: '+1-502-276-1858',
+  email: 'inquiries@jnesectech.com',
   facebook: 'https://www.facebook.com/people/JNE-Security-Systems/100063616898575/',
   // ServiceM8 online booking / quote request (same link the old site used)
   bookingUrl:
@@ -30,7 +28,7 @@ export const services: Service[] = [
     title: 'Surveillance',
     image: 'surveillance',
     summary:
-      'Video surveillance deters outside and inside theft and gives you clear evidence against false claims like slip-and-fall incidents. Continuous, automated digital recording with images that never degrade.',
+      'Video surveillance deters both outside and inside theft, and it gives you clear evidence against false claims such as slip-and-fall incidents. We provide continuous, automated digital recording with images that never degrade.',
     groups: [
       {
         heading: 'Digital recording solutions',
@@ -44,21 +42,21 @@ export const services: Service[] = [
       },
       {
         heading: 'IP cameras',
-        items: ['Identification-quality video', 'Superior resolution', 'Zoom in on details'],
+        items: ['Identification-quality video', 'Superior resolution', 'The ability to zoom in on details'],
       },
       {
         heading: 'HD over coax cameras',
-        items: ['Lower-cost solution', 'Great image quality', 'Ideal for homes and small areas'],
+        items: ['Lower-cost solution', 'Great image quality', 'A great option for homes and small areas'],
       },
     ],
-    note: 'Need identification-quality video, or just video verification? We will help you decide.',
+    note: 'Do you need identification-quality video or just video verification? We will help you decide.',
   },
   {
     id: 'access-control',
     title: 'Access Control',
     image: 'access-control',
     summary:
-      'Cards, codes, key fobs or biometrics, built for organizations with many doors, many employees or high turnover. We install it professionally and train your team to use it.',
+      'Choose cards, codes, key fobs or biometrics. Our systems are built for organizations with many doors, many employees or high turnover, and we install them professionally and train your team to use them.',
     groups: [
       {
         heading: 'Key benefits',
@@ -66,10 +64,10 @@ export const services: Service[] = [
           'Manage access from anywhere, any time',
           'Grant or revoke individual codes in real time',
           'Automate your alarm arming schedule',
-          'No rekeying when someone leaves: just remove their code',
+          'No rekeying when someone leaves; just remove their code',
           'Run reports and produce badges',
           'One-time codes for contractors and temporary users',
-          'Integrates with video monitoring',
+          'Integration with video monitoring',
         ],
       },
     ],
@@ -79,7 +77,7 @@ export const services: Service[] = [
     title: 'Video Monitoring',
     image: 'video-monitoring',
     summary:
-      'Cameras deter theft, vandalism and unauthorized access, and recorded footage gives law enforcement real evidence. Paired with analytics and AI, monitoring enables real-time threat detection and response.',
+      'Cameras deter theft, vandalism and unauthorized access, and recorded footage gives law enforcement real evidence. When paired with analytics and AI, monitoring enables real-time threat detection and response.',
     groups: [
       {
         heading: 'What it gives you',
@@ -90,7 +88,7 @@ export const services: Service[] = [
           'Workplace safety and faster response to accidents',
           'Visitor verification at access points',
           'Workflow and customer insights for business and retail',
-          'Loss prevention that can reduce security staffing costs',
+          'Loss prevention that can reduce the need for security staff',
         ],
       },
     ],
@@ -100,17 +98,17 @@ export const services: Service[] = [
     title: 'Security',
     image: 'security',
     summary:
-      'Intrusion, fire and life-safety systems with the latest equipment and capabilities, from glass-break sensors to real-time video on your phone, for your family, home or business.',
+      'We install intrusion, fire and life-safety systems with the latest equipment and capabilities, from glass-break sensors to real-time video on your phone, to protect your family, home or business.',
     groups: [
       {
-        heading: 'Why our systems',
+        heading: 'Why choose our systems',
         items: [
           'Over 25 years of combined experience serving Kentuckiana',
           'FM-approved, UL-listed equipment from major manufacturers',
           'Interactive, Z-Wave and home automation technology',
-          'Cellular communication backup, so cut phone lines do not cut service',
+          'Cellular backup, so a cut phone line does not interrupt service',
           'Installed by licensed technicians with years of field experience',
-          'Service plan for the life of your monitoring',
+          'A service plan for as long as you are monitored',
           'Financing, flexible contracts and payment terms',
         ],
       },
@@ -121,7 +119,7 @@ export const services: Service[] = [
     title: 'Technology & Networks',
     image: 'networks',
     summary:
-      'Your one-stop IT partner for business and home: network design and management, firewalls, telephony and audio/visual, built on Ubiquiti, Cisco, Netgear and Meraki equipment.',
+      'We are your one-stop IT partner for business and home, handling network design and management, firewalls, telephony and audio/visual with equipment from Ubiquiti, Cisco, Netgear and Meraki.',
     groups: [
       {
         heading: 'IT services',
@@ -136,10 +134,10 @@ export const services: Service[] = [
       {
         heading: 'How we work',
         items: [
-          'Swift assessment of your immediate needs',
+          'A swift assessment of your immediate needs',
           'A clear plan aligned with your goals',
           'Your approval before work begins',
-          'Rapid implementation and support long after setup',
+          'Rapid implementation, with support long after setup',
         ],
       },
     ],
@@ -149,22 +147,22 @@ export const services: Service[] = [
 export const smartHome = [
   {
     title: 'Smart home & automation',
-    text: 'Smart locks, remote garage door openers and video doorbells. Take charge of your home or business and stay connected from anywhere.',
+    text: 'With smart locks, remote garage door openers and video doorbells, you can take charge of your home or business and stay connected from anywhere.',
   },
   {
     title: 'Home theater & audio',
-    text: 'Custom whole-home audio, wireless multi-room listening, 7.1.4 Dolby Atmos sound, projectors, screens and surround sound for movie night.',
+    text: 'We install custom whole-home audio, wireless multi-room listening, 7.1.4 Dolby Atmos sound, projectors, screens and surround sound for cinema-quality movie nights.',
   },
   {
     title: 'Commercial audio/visual',
-    text: 'Systems tailored to your space, from offices to sports bars, with integrated video conferencing and streamlined controls.',
+    text: 'We tailor audio and video systems to your space, from offices to sports bars, including integrated video conferencing and streamlined controls.',
   },
 ];
 
 export const reasons = [
   {
     title: 'Monitored protection',
-    text: 'Protection from burglary, fire, medical emergencies, flood and carbon monoxide with a professionally monitored system.',
+    text: 'A professionally monitored system protects you from burglary, fire, medical emergencies, flooding and carbon monoxide.',
   },
   {
     title: 'Someone standing watch',
@@ -179,7 +177,7 @@ export const reasons = [
 export const process = [
   {
     title: 'Full walkthrough',
-    text: 'We walk your business or home first, then design a package that performs the way you expect today and far into the future.',
+    text: 'We start by walking through your home or business, then design a package that performs the way you expect, today and far into the future.',
   },
   {
     title: 'No cookie-cutter systems',
@@ -194,7 +192,7 @@ export const process = [
 export const values = [
   { title: 'Excellence', text: 'High-quality solutions and service that exceed expectations.' },
   { title: 'Integrity', text: 'Honesty, transparency and ethical behavior in every interaction.' },
-  { title: 'Innovation', text: 'Staying at the front of technology to bring you the best.' },
+  { title: 'Innovation', text: 'Staying at the forefront of technology to bring you the best.' },
   { title: 'Customer focus', text: 'Personalized solutions and exceptional service.' },
   { title: 'Collaboration', text: 'Teamwork with our employees, partners and clients.' },
 ];

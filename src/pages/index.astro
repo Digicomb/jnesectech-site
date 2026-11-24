@@ -33,24 +33,16 @@ const isReview = base !== '';
 const years = new Date().getFullYear() - company.founded;
 const title = 'JNE Security and Technology | Security & IT in Louisville, KY';
 const description =
-  'Security systems, surveillance, access control, video monitoring and IT networks for Louisville and Kentuckiana businesses and homes since 2010.';
+  'Security systems, surveillance, access control, video monitoring and IT networks for businesses and homes in Louisville and across Kentuckiana since 2010.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: company.name,
   url: 'https://jnesectech.com/',
-  telephone: '+1-502-713-8301',
+  telephone: company.phoneIntl,
   email: company.email,
   foundingDate: String(company.founded),
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: company.street,
-    addressLocality: 'Louisville',
-    addressRegion: 'KY',
-    postalCode: '40299',
-    addressCountry: 'US',
-  },
   areaServed: 'Louisville Metro and Kentuckiana',
   sameAs: [company.facebook],
 };
@@ -104,8 +96,9 @@ const jsonLd = {
           <p class="eyebrow">Louisville's local security &amp; IT company</p>
           <h1>Protection for the people and places that matter most.</h1>
           <p class="lede">
-            Security systems and IT services that help Louisville business owners and residents feel
-            safer, save money and get real peace of mind. Trusted since {company.founded}.
+            We deliver security systems and IT services that help Louisville business owners and
+            residents feel safer, save money and enjoy real peace of mind. Louisville has trusted us
+            since {company.founded}.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href={company.bookingUrl} target="_blank" rel="noopener">Request a quote</a>
@@ -140,9 +133,9 @@ const jsonLd = {
           </div>
           <div class="intro-copy">
             <p>
-              We protect your family, your business and your home. Our mission is simple, innovative
-              security and IT solutions, delivered with integrity, transparency and industry best
-              practices, and backed by long-term relationships with every client.
+              We protect your family, your business and your home. Our mission is to provide simple,
+              innovative security and IT solutions, delivered with integrity, transparency and
+              industry best practices and backed by long-term relationships with every client.
             </p>
             <ul class="checks two-col">
               <li>Security, surveillance &amp; access control</li>
@@ -161,10 +154,10 @@ const jsonLd = {
         <div class="wrap">
           <div class="section-head">
             <p class="eyebrow dark">Our services</p>
-            <h2>Second to none, for your home and business.</h2>
+            <h2>Second-to-none service for your home and business.</h2>
             <p>
-              Cutting-edge technology, vigilant monitoring and a commitment to your safety. And for
-              many organizations, we are more cost-effective than an internal IT department.
+              We combine cutting-edge technology, vigilant monitoring and a commitment to your safety.
+              For many organizations, we are also more cost-effective than an internal IT department.
             </p>
           </div>
 
@@ -216,11 +209,11 @@ const jsonLd = {
         <div class="wrap">
           <div class="section-head light">
             <p class="eyebrow">Why JNE</p>
-            <h2>Superior installation, monitoring and equipment, at an affordable price.</h2>
+            <h2>Superior installation, monitoring and equipment at an affordable price.</h2>
             <p>
               You want to secure your family, business, home, data and possessions in every way
               possible. We bring advanced mobile and web technology to every system we install across
-              the Louisville metro.
+              the Louisville metro area.
             </p>
           </div>
           <div class="reason-grid">
@@ -261,18 +254,18 @@ const jsonLd = {
             <p class="eyebrow dark">Our story</p>
             <h2>Customer service doesn't end with the sale. It begins there.</h2>
             <p>
-              Michael Olson founded JNE Security and Technology in {company.founded}, after seeing how
-              poorly customers were supported after the sale at a previous security company. He knew
+              Michael Olson founded JNE Security and Technology in {company.founded} after seeing how
+              poorly a previous security company supported its customers once the sale was made. He knew
               he could set a higher standard: cutting-edge equipment and lasting service for businesses
               and homeowners alike.
             </p>
             <p>
               The name holds special meaning. <strong>J</strong>oshua, <strong>N</strong>oah and
-              <strong>E</strong>mily are Michael's three children, and together with his Christian
-              faith they shape every part of how the business is run.
+              <strong>E</strong>mily are Michael's three children. Together with his Christian
+              faith, they shape every part of how the business is run.
             </p>
             <p>
-              Today JNE is Kentuckiana's local go-to security and IT specialist: a team that keeps
+              Today, JNE is Kentuckiana's local go-to security and IT specialist: a team that keeps
               evolving to meet both the market's demands and the unique needs of your business.
             </p>
             <blockquote>
@@ -326,7 +319,7 @@ const jsonLd = {
         <div class="wrap financing-inner">
           <div>
             <h2>Commercial financing available</h2>
-            <p>Easy, affordable financing, flexible contracts and payment terms. Ask us for details.</p>
+            <p>We offer easy, affordable financing with flexible contracts and payment terms. Ask us for details.</p>
           </div>
           <a class="btn btn-light" href={company.phoneHref}>Ask about financing</a>
         </div>
@@ -357,10 +350,6 @@ const jsonLd = {
               <span class="label">Email</span>
               <a href={`mailto:${company.email}`}>{company.email}</a>
             </li>
-            <li>
-              <span class="label">Office</span>
-              <a href={company.mapUrl} target="_blank" rel="noopener">{company.street}<br />{company.city}</a>
-            </li>
           </ul>
         </div>
       </section>
@@ -370,7 +359,7 @@ const jsonLd = {
       <div class="wrap footer-inner">
         <div>
           <Image src={logo} alt="JNE Security and Technology" width={170} class="footer-logo" />
-          <p>Security and IT for Louisville and Kentuckiana businesses and homes since {company.founded}.</p>
+          <p>Security and IT for businesses and homes across Kentuckiana since {company.founded}.</p>
         </div>
         <div>
           <h3>Services</h3>
@@ -383,7 +372,6 @@ const jsonLd = {
           <ul>
             <li><a href={company.phoneHref}>{company.phone}</a></li>
             <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
-            <li><a href={company.mapUrl} target="_blank" rel="noopener">{company.street}, {company.city}</a></li>
             <li><a href={company.facebook} target="_blank" rel="noopener">Facebook</a></li>
           </ul>
         </div>
