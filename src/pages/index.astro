@@ -30,6 +30,7 @@ const partnerLogo = (file: string) =>
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const asset = (path: string) => `${base}${path}`;
 const isReview = base !== '';
+const ogImage = new URL(asset('/og-image.jpg'), Astro.site).href;
 
 const years = new Date().getFullYear() - company.founded;
 const title = 'JNE Security and Technology | Security & IT in Louisville, KY';
@@ -64,6 +65,13 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://jnesectech.com/" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="JNE Security and Technology: security, surveillance and IT for Louisville homes and businesses" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content="#012b53" />
     {isReview && <meta name="robots" content="noindex, nofollow" />}
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

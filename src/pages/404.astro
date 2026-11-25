@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import logoHeader from '../assets/logo-header.svg';
+import { company } from '../content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const home = `${base}/`;
+const sections = [
+  ['Services', 'services'],
+  ['Why JNE', 'why'],
+  ['About', 'about'],
+  ['Contact', 'contact'],
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found | {company.name}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/favicon-32.png`} />
+    <meta name="theme-color" content="#012b53" />
+  </head>
+  <body class="not-found">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href={home} class="brand" aria-label="JNE Security and Technology home">
+          <img src={logoHeader.src} alt="JNE Security and Technology" width="150" height="36" />
+        </a>
+        <a class="header-phone" href={company.phoneHref}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+          <span>{company.phone}</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="section not-found-main">
+      <div class="wrap">
+        <p class="eyebrow dark">Error 404</p>
+        <h1>We couldn't find that page.</h1>
+        <p class="lede">
+          The page may have moved when we launched our new website. Everything about our security
+          and IT services is now on one page.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={home}>Go to the home page</a>
+          <a class="btn btn-outline" href={company.phoneHref}>Call {company.phone}</a>
+        </div>
+        <ul class="not-found-links" aria-label="Jump to a section">
+          {sections.map(([label, id]) => <li><a href={`${home}#${id}`}>{label}</a></li>)}
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
