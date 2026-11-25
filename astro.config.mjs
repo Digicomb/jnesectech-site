@@ -11,6 +11,6 @@ export default defineConfig({
   base: '/jnesectech-site',
   // Old WordPress URLs are redirect stubs (src/pages/*.astro); keep them out of the sitemap.
   integrations: [
-    sitemap({ filter: (page) => !/\/(about-us|services|contact|privacy-policy)\/$/.test(page) }),
+    sitemap({ filter: (page) => !/\/(about-us|services|contact)\/$/.test(page) }),
   ],
 });

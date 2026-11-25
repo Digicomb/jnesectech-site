@@ -1,5 +1,114 @@
 ---
-import Redirect from '../components/Redirect.astro';
+import '../styles/global.css';
+import logoHeader from '../assets/logo-header.svg';
+import { company } from '../content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const home = `${base}/`;
+const isReview = base !== '';
+const updated = 'November 25, 2026';
 ---
 
-<Redirect section="" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy | {company.name}</title>
+    <meta name="description" content="How JNE Security and Technology handles the information you send through jnesectech.com." />
+    {isReview && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/favicon-32.png`} />
+    <meta name="theme-color" content="#012b53" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href={home} class="brand" aria-label="JNE Security and Technology home">
+          <img src={logoHeader.src} alt="JNE Security and Technology" width="150" height="36" />
+        </a>
+        <a class="header-phone" href={company.phoneHref} style="margin-left:auto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+          <span>{company.phone}</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="section legal">
+      <div class="wrap legal-body">
+        <p class="eyebrow dark">Privacy</p>
+        <h1>Privacy policy</h1>
+        <p class="legal-updated">Last updated {updated}</p>
+
+        <p>
+          This policy explains what information {company.name} ("JNE", "we", "us") collects through
+          this website and how we use it. If you have a question about it, call us
+          at <a href={company.phoneHref}>{company.phone}</a> or
+          email <a href={`mailto:${company.email}`}>{company.email}</a>.
+        </p>
+
+        <h2>Information you send us</h2>
+        <p>
+          When you use the contact form, we receive the details you enter: your name, email address,
+          phone number (if you give it), whether the request is for a home or business, the service
+          you are interested in and your message. We also record the date and time you sent it.
+        </p>
+        <p>
+          If you call or email us directly, we receive whatever you choose to share in that
+          conversation.
+        </p>
+
+        <h2>How we use it</h2>
+        <p>
+          We use your information only to respond to your request: to answer questions, prepare a
+          quote, schedule a visit or follow up on service. We do not sell, rent or trade your
+          information, and we do not add you to a marketing list.
+        </p>
+
+        <h2>Who handles it</h2>
+        <p>
+          Form submissions are stored in a secure database hosted by Supabase, and a copy is sent to
+          our team by email through Resend. These providers process the information on our behalf
+          and may not use it for anything else. Online service bookings are handled by ServiceM8,
+          which has its own privacy policy.
+        </p>
+        <p>
+          We may share information if the law requires it, or to protect the safety of our
+          customers, our staff or the public.
+        </p>
+
+        <h2>Cookies and tracking</h2>
+        <p>
+          This website does not use cookies, analytics or advertising trackers. The pages are served
+          by GitHub Pages, which, like any web host, may keep standard server logs such as IP
+          addresses for security purposes.
+        </p>
+
+        <h2>How long we keep it</h2>
+        <p>
+          We keep form messages for as long as we need them to serve you and keep reasonable business
+          records. You can ask us to delete your information at any time.
+        </p>
+
+        <h2>Your choices</h2>
+        <p>
+          You can ask to see, correct or delete the information you have sent us by contacting us at
+          the phone number or email above.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          This website is not intended for children under 13, and we do not knowingly collect
+          information from them.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          If we change this policy, we will update it on this page and change the date at the top.
+        </p>
+
+        <p class="legal-back"><a class="btn btn-outline" href={home}>Back to the home page</a></p>
+      </div>
+    </main>
+  </body>
+</html>

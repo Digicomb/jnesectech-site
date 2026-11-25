@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 import '../styles/global.css';
 import logoHeader from '../assets/logo-header.svg';
 import logoFooter from '../assets/logo-footer.svg';
+import ContactForm from '../components/ContactForm.astro';
 import heroImg from '../assets/hero-tech.png';
 import aboutImg from '../assets/about.jpg';
 import csaa from '../assets/badges/csaa.jpg';
@@ -133,7 +134,7 @@ const jsonLd = {
             since {company.founded}.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href={company.bookingUrl} target="_blank" rel="noopener">Request a quote</a>
+            <a class="btn btn-primary" href="#contact">Request a quote</a>
             <a class="btn btn-ghost" href={company.phoneHref}>Call {company.phone}</a>
           </div>
           <ul class="hero-tags" aria-label="What we do">
@@ -365,24 +366,24 @@ const jsonLd = {
             <h2>Don't put off protecting your family, home and business.</h2>
             <p>
               Whether you need a basic system or a complete security, surveillance and network
-              package, JNE has the products and knowledge to design the right one. Call us, email us or
-              request a visit online.
+              package, JNE has the products and knowledge to design the right one. Send us a message,
+              call or email.
             </p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href={company.bookingUrl} target="_blank" rel="noopener">Request a quote</a>
-              <a class="btn btn-outline" href={company.bookingUrl} target="_blank" rel="noopener">Book a service visit</a>
-            </div>
+            <ul class="contact-cards">
+              <li>
+                <span class="label">Phone</span>
+                <a href={company.phoneHref}>{company.phone}</a>
+              </li>
+              <li>
+                <span class="label">Email</span>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
+            </ul>
+            <p class="booking-note">
+              Already a customer? <a href={company.bookingUrl} target="_blank" rel="noopener">Book a service visit online</a>.
+            </p>
           </div>
-          <ul class="contact-cards">
-            <li>
-              <span class="label">Phone</span>
-              <a href={company.phoneHref}>{company.phone}</a>
-            </li>
-            <li>
-              <span class="label">Email</span>
-              <a href={`mailto:${company.email}`}>{company.email}</a>
-            </li>
-          </ul>
+          <ContactForm privacyHref={asset('/privacy-policy/')} />
         </div>
       </section>
     </main>
@@ -409,7 +410,8 @@ const jsonLd = {
         </div>
       </div>
       <div class="wrap copyright">
-        © {new Date().getFullYear()} {company.name}. All rights reserved.
+        © {new Date().getFullYear()} {company.name}. All rights reserved. ·
+        <a href={asset('/privacy-policy/')}>Privacy policy</a>
       </div>
     </footer>
   </body>
