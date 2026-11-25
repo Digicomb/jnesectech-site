@@ -1,0 +1,38 @@
+---
+// Redirect stub for a page from the old WordPress site, so indexed links and
+// bookmarks land on the matching section of the one-page site.
+interface Props {
+  section: string; // id on the home page, or '' for the top
+}
+const { section } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const home = `${base}/`;
+const target = section ? `${home}#${section}` : home;
+const canonical = new URL(home, Astro.site).href;
+// Old /services/#anchor ids -> new section ids
+const anchors = {
+  security: 'security',
+  surveillance: 'surveillance',
+  accesscontrol: 'access-control',
+  videomonitoring: 'video-monitoring',
+  technologynetworks: 'technology-networks',
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>JNE Security and Technology</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={canonical} />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <script is:inline define:vars={{ target, home, anchors }}>
+      const old = location.hash.slice(1).toLowerCase();
+      location.replace(anchors[old] ? `${home}#${anchors[old]}` : target);
+    </script>
+  </head>
+  <body>
+    <p>This page has moved. <a href={target}>Continue to JNE Security and Technology</a>.</p>
+  </body>
+</html>

@@ -9,5 +9,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://digicomb.github.io',
   base: '/jnesectech-site',
-  integrations: [sitemap()],
+  // Old WordPress URLs are redirect stubs (src/pages/*.astro); keep them out of the sitemap.
+  integrations: [
+    sitemap({ filter: (page) => !/\/(about-us|services|contact|privacy-policy)\/$/.test(page) }),
+  ],
 });

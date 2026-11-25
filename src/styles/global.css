@@ -96,6 +96,24 @@ p { margin: 0 0 1em; }
 .nav { display: flex; gap: 1.8rem; list-style: none; margin: 0 0 0 auto; padding: 0; }
 .nav a { text-decoration: none; color: var(--ink); font-weight: 600; font-size: 0.95rem; }
 .nav a:hover { color: var(--red); }
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px; padding: 0; margin-left: 0.4rem;
+  border: 1px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer;
+  align-items: center; justify-content: center;
+}
+.menu-bars, .menu-bars::before, .menu-bars::after {
+  display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--ink);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.menu-bars { position: relative; }
+.menu-bars::before, .menu-bars::after { content: ''; position: absolute; left: 0; }
+.menu-bars::before { top: -6px; }
+.menu-bars::after { top: 6px; }
+.menu-open .menu-bars { background: transparent; }
+.menu-open .menu-bars::before { transform: translateY(6px) rotate(45deg); }
+.menu-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
+.menu-toggle:focus-visible, .nav a:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
 .header-phone {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--navy); color: #fff; text-decoration: none;
@@ -275,8 +293,19 @@ blockquote {
 
 /* Responsive */
 @media (max-width: 960px) {
-  .nav { display: none; }
+  .header-inner { gap: 0.6rem; }
+  .menu-toggle { display: inline-flex; }
   .header-phone { margin-left: auto; }
+  .site-header nav { position: absolute; left: 0; right: 0; top: 100%; }
+  .nav {
+    display: none; flex-direction: column; gap: 0; margin: 0;
+    background: #fff; border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 30px -20px rgba(1, 29, 58, 0.45);
+    padding: 0.4rem 1.25rem 1rem;
+  }
+  .menu-open .nav { display: flex; }
+  .nav a { display: block; padding: 0.9rem 0; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
+  .nav li:last-child a { border-bottom: 0; }
   .intro-grid, .about-grid, .video-wrap, .contact-grid, .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .service, .service:nth-child(even) { grid-template-columns: 1fr; }
   .service:nth-child(even) .service-media { order: 0; }
