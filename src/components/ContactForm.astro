@@ -7,6 +7,13 @@ interface Props {
 const { privacyHref } = Astro.props;
 ---
 
+<div class="contact-form-wrap">
+<div class="contact-form form-thanks" id="contact-thanks" tabindex="-1" role="status" hidden>
+  <svg class="thanks-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" /><path d="M7 12.5l3.2 3.2L17 9" /></svg>
+  <h3 class="form-title">Thank you!</h3>
+  <p>We've got your message and will get back to you soon.</p>
+  <p class="thanks-call">Need us sooner? Call <a href="tel:+15022761858">(502) 276-1858</a>.</p>
+</div>
 <form class="contact-form" id="contact-form" novalidate>
   <h3 class="form-title">Request a quote or ask a question</h3>
   <div class="field-row">
@@ -63,6 +70,7 @@ const { privacyHref } = Astro.props;
   </p>
   <p class="form-status" role="status" aria-live="polite"></p>
 </form>
+</div>
 
 <script>
   import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from '../config';
@@ -70,7 +78,16 @@ const { privacyHref } = Astro.props;
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = form.querySelector('.form-status') as HTMLParagraphElement;
   const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-  const thanks = "Thanks! We've got your message and will get back to you soon.";
+  const thanksPanel = document.getElementById('contact-thanks') as HTMLDivElement;
+
+  // Replace the form with the thank-you panel.
+  const showThanks = () => {
+    form.reset();
+    form.hidden = true;
+    thanksPanel.hidden = false;
+    thanksPanel.focus({ preventScroll: true });
+    thanksPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 
   const setStatus = (text: string, kind: 'error' | 'success' | '') => {
     status.textContent = text;
@@ -84,8 +101,7 @@ const { privacyHref } = Astro.props;
 
     // Bots fill the hidden field; pretend it worked and drop it.
     if (value('website')) {
-      form.reset();
-      setStatus(thanks, 'success');
+      showThanks();
       return;
     }
 
@@ -125,8 +141,8 @@ const { privacyHref } = Astro.props;
         throw new Error(`Contact request failed: ${response.status}`);
       }
 
-      form.reset();
-      setStatus(thanks, 'success');
+      setStatus('', '');
+      showThanks();
     } catch (error) {
       console.error(error);
       setStatus(

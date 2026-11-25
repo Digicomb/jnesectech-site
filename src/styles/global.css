@@ -388,3 +388,10 @@ blockquote {
 .legal-body p { color: var(--text); }
 .legal-updated { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
 .legal-back { margin-top: 2.5rem; }
+/* Thank-you panel shown in place of the form after a successful send */
+.contact-form[hidden] { display: none; }
+.form-thanks { text-align: center; justify-items: center; padding-block: clamp(2.4rem, 5vw, 3.6rem); outline: none; }
+.form-thanks p { margin: 0; color: var(--muted); }
+.form-thanks .thanks-call a { color: var(--red); font-weight: 600; }
+.thanks-icon { width: 3.4rem; height: 3.4rem; fill: var(--lav-soft); stroke: var(--teal); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.thanks-icon path { fill: none; stroke-width: 2.2; }
